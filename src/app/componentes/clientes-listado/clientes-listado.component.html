@@ -1,5 +1,12 @@
-<ul>
-  <li *ngFor="let cliente of clientes">
-    {{cliente.nombre}}
-  </li>
-</ul>
+<table>
+  <thead>
+    <tr>
+      <th>Id</th><th>Nombre</th><th>NIF</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let cliente of clientes">
+      <th>{{cliente.id}}</th><td>{{cliente.nombre}}</td><td>{{cliente.nif}}</td>
+    </tr>
+  </tbody>
+</table>
