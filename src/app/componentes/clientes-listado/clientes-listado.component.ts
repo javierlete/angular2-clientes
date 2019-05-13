@@ -20,10 +20,12 @@ export class ClientesListadoComponent implements OnInit {
   }
 
   borrar(id: number): void {
-    this.clientesService.deleteCliente(id).subscribe(
-      idRecibido => this.clientes = this.clientes.filter(
-        cliente => cliente.id !== idRecibido)
-    )
+    if (confirm(`¿Estás seguro de borrar el registro ${id}?`)) {
+      this.clientesService.deleteCliente(id).subscribe(
+        idRecibido => this.clientes = this.clientes.filter(
+          cliente => cliente.id !== idRecibido)
+      )
+    }
   }
 
 }
