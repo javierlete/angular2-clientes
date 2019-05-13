@@ -8,7 +8,16 @@ import { CLIENTES } from '../mocks/mock-clientes';
 })
 export class ClientesService {
 
+  clientes: Cliente[] = CLIENTES;
+
   getClientes(): Observable<Cliente[]> {
-    return of(CLIENTES);
+    return of(this.clientes);
+  }
+  
+  deleteCliente(id: number): Observable<number> {
+    console.log('ANTES', this.clientes);
+    this.clientes = this.clientes.filter(cliente => cliente.id !== id);
+    console.log('DESPUES', this.clientes);
+    return of(id);
   }
 }
