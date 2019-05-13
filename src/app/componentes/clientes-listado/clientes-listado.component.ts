@@ -9,7 +9,7 @@ import { Cliente } from 'src/app/modelo/cliente';
 })
 export class ClientesListadoComponent implements OnInit {
 
-  clientes: Cliente[];
+  clientes: Cliente[] = [];
 
   constructor(private clientesService: ClientesService) { }
 
