@@ -1,7 +1,8 @@
 <table>
   <thead>
     <tr>
-      <th>Id</th><th>Nombre</th><th>NIF</th><th><a href="#">Añadir</a></th>
+      <th>Id</th><th>Nombre</th><th>NIF</th>
+      <th><a routerLink="/clientes/detalles">Añadir</a></th>
     </tr>
   </thead>
   <tbody>
@@ -10,7 +11,7 @@
       <td>{{cliente.nombre}}</td>
       <td>{{cliente.nif}}</td>
       <td>
-        <a href="#">Editar</a>&nbsp;
+        <a routerLink="/clientes/detalles">Editar</a>&nbsp;
         <a (click)="borrar(cliente.id)">Borrar</a>
       </td>
     </tr>
