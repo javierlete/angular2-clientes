@@ -20,4 +20,21 @@ export class ClientesService {
     console.log('DESPUES', this.clientes);
     return of(id);
   }
+
+  postCliente(cliente: Cliente): Observable<Cliente> {
+    //const clienteMayorId: Cliente  = this.clientes.reduce(
+    //  (anterior: any, actual: any) => actual.id > anterior.id ? actual : anterior
+    //);
+  
+    const nuevoId: number = Math.max.apply
+      (Math, this.clientes.map(cliente => cliente.id)) + 1;
+
+    //const nuevoId: number = clienteMayorId.id + 1;
+
+    cliente.id = nuevoId;
+
+    this.clientes.push(cliente);
+
+    return of(cliente);
+  }
 }
