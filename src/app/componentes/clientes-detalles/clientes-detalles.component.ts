@@ -1,21 +1,39 @@
 import { Component, OnInit } from '@angular/core';
 import { Cliente } from 'src/app/modelo/cliente';
 import { ClientesService } from 'src/app/servicios/clientes.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-clientes-detalles',
   templateUrl: './clientes-detalles.component.html',
   styleUrls: ['./clientes-detalles.component.css']
 })
-export class ClientesDetallesComponent {
+export class ClientesDetallesComponent implements OnInit {
+
+  cliente: Cliente = { id: 0, nombre: '', nif: '' };
 
   constructor(
     private clientesService: ClientesService,
-    private router: Router) {}
+    private router: Router,
+    private ruta: ActivatedRoute) { }
+
+  ngOnInit(): void {
+    const id: number = +this.ruta.snapshot.paramMap.get('id');
+
+    console.log(id);
+
+    if(id) {
+      this.clientesService.getCliente(id).subscribe(
+        cliente => {
+          this.cliente = cliente;
+          console.log(this.cliente);
+        }
+      );
+    }
+  }
 
   guardar(id: number, nombre: string, nif: string): void {
-    let cliente: Cliente = { id:id, nombre:nombre, nif:nif };
+    let cliente: Cliente = { id: id, nombre: nombre, nif: nif };
     console.log('EMITIDO', cliente);
 
     this.clientesService.postCliente(cliente).subscribe(
@@ -25,5 +43,5 @@ export class ClientesDetallesComponent {
       }
     );
   }
-  
+
 }

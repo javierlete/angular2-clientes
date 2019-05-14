@@ -14,6 +14,10 @@ export class ClientesService {
     return of(this.clientes);
   }
   
+  getCliente(id: number): Observable<Cliente> {
+    return of(this.clientes.find(cliente => cliente.id === id));
+  }
+
   deleteCliente(id: number): Observable<number> {
     console.log('ANTES', this.clientes);
     this.clientes = this.clientes.filter(cliente => cliente.id !== id);

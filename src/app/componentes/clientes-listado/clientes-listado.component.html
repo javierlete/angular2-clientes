@@ -11,7 +11,7 @@
       <td>{{cliente.nombre}}</td>
       <td>{{cliente.nif}}</td>
       <td>
-        <a routerLink="/clientes/detalles">Editar</a>&nbsp;
+        <a routerLink="/clientes/detalles/{{cliente.id}}">Editar</a>&nbsp;
         <a (click)="borrar(cliente.id)">Borrar</a>
       </td>
     </tr>
