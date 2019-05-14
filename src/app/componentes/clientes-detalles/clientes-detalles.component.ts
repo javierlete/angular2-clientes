@@ -22,7 +22,7 @@ export class ClientesDetallesComponent implements OnInit {
 
     console.log(id);
 
-    if(id) {
+    if (id) {
       this.clientesService.getCliente(id).subscribe(
         cliente => {
           this.cliente = cliente;
@@ -36,12 +36,21 @@ export class ClientesDetallesComponent implements OnInit {
     let cliente: Cliente = { id: id, nombre: nombre, nif: nif };
     console.log('EMITIDO', cliente);
 
-    this.clientesService.postCliente(cliente).subscribe(
-      cliente => {
-        console.log('RECIBIDO', cliente);
-        this.router.navigate(['/clientes/listado'])
-      }
-    );
+    if (id) {
+      this.clientesService.putCliente(cliente).subscribe(
+        cliente => {
+          console.log('RECIBIDO', cliente);
+          this.router.navigate(['/clientes/listado'])
+        }
+      );
+    } else {
+      this.clientesService.postCliente(cliente).subscribe(
+        cliente => {
+          console.log('RECIBIDO', cliente);
+          this.router.navigate(['/clientes/listado'])
+        }
+      );
+    }
   }
 
 }

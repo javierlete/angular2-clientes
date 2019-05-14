@@ -18,6 +18,15 @@ export class ClientesService {
     return of(this.clientes.find(cliente => cliente.id === id));
   }
 
+  putCliente(cliente: Cliente): Observable<Cliente> {
+    const posicionArray = this.clientes.findIndex(
+      clienteRepositorio => clienteRepositorio.id === cliente.id);
+    
+    this.clientes[posicionArray] = cliente;
+
+    return of(cliente);
+  }
+
   deleteCliente(id: number): Observable<number> {
     console.log('ANTES', this.clientes);
     this.clientes = this.clientes.filter(cliente => cliente.id !== id);
