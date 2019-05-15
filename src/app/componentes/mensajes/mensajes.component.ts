@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MensajesComponent implements OnInit {
 
+  mensaje: string = 'Bienvenido a esta aplicación';
+  
   constructor() { }
 
   ngOnInit() {
