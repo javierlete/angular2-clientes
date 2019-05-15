@@ -14,6 +14,11 @@
       "id": 4,
       "nombre": "Nuevo",
       "nif": "11111111A"
+    },
+    {
+      "id": 5,
+      "nombre": "Nuevo",
+      "nif": "Añadido"
     }
   ]
 }
