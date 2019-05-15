@@ -22,12 +22,7 @@ export class ClientesService {
   }
 
   putCliente(cliente: Cliente): Observable<Cliente> {
-    const posicionArray = this.clientes.findIndex(
-      clienteRepositorio => clienteRepositorio.id === cliente.id);
-    
-    this.clientes[posicionArray] = cliente;
-
-    return of(cliente);
+    return this.http.put<Cliente>(api + cliente.id, cliente);
   }
 
   deleteCliente(id: number): Observable<Cliente> {
