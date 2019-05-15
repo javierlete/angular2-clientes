@@ -1,17 +1,20 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Cliente } from '../modelo/cliente';
-import { CLIENTES } from '../mocks/mock-clientes';
+import { HttpClient } from '@angular/common/http';
 
+const api = 'http://localhost:3000/clientes/'
 @Injectable({
   providedIn: 'root'
 })
 export class ClientesService {
+  
+  clientes: Cliente[];
 
-  clientes: Cliente[] = CLIENTES;
+  constructor(private http: HttpClient) {}
 
   getClientes(): Observable<Cliente[]> {
-    return of(this.clientes);
+    return this.http.get<Cliente[]>(api);
   }
   
   getCliente(id: number): Observable<Cliente> {
