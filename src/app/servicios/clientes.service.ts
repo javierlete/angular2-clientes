@@ -18,7 +18,7 @@ export class ClientesService {
   }
   
   getCliente(id: number): Observable<Cliente> {
-    return of(this.clientes.find(cliente => cliente.id === id));
+    return this.http.get<Cliente>(api + id);
   }
 
   putCliente(cliente: Cliente): Observable<Cliente> {
