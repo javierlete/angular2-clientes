@@ -8,8 +8,6 @@ const api = 'http://localhost:3000/clientes/'
   providedIn: 'root'
 })
 export class ClientesService {
-  
-  clientes: Cliente[];
 
   constructor(private http: HttpClient) {}
 
