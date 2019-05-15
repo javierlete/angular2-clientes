@@ -4,21 +4,6 @@
       "id": 1,
       "nombre": "Javier",
       "nif": "12345678Z"
-    },
-    {
-      "id": 3,
-      "nombre": "Pedro",
-      "nif": "87654321A"
-    },
-    {
-      "id": 4,
-      "nombre": "Nuevo",
-      "nif": "11111111A"
-    },
-    {
-      "id": 5,
-      "nombre": "Nuevo",
-      "nif": "Añadido"
     }
   ]
 }

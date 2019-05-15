@@ -30,11 +30,8 @@ export class ClientesService {
     return of(cliente);
   }
 
-  deleteCliente(id: number): Observable<number> {
-    console.log('ANTES', this.clientes);
-    this.clientes = this.clientes.filter(cliente => cliente.id !== id);
-    console.log('DESPUES', this.clientes);
-    return of(id);
+  deleteCliente(id: number): Observable<Cliente> {
+    return this.http.delete<Cliente>(api + id);
   }
 
   postCliente(cliente: Cliente): Observable<Cliente> {
