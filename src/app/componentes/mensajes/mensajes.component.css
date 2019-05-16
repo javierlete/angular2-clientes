@@ -1,6 +1,10 @@
-p {
+ul {
     background-color: lightblue;
     font-weight: bold;
     border: 1px solid darkgray;
     padding: 1em;
+}
+
+li {
+    list-style: none;
 }

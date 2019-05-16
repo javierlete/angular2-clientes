@@ -1,3 +1,6 @@
+<ul>
+  <li *ngFor="let mensaje of mensajes">{{mensaje}}</li>
+</ul>
 <p>
-  {{mensaje}}
+  <a (click)="limpiarMensajes()">Limpiar mensajes</a>
 </p>

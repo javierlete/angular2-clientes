@@ -2,12 +2,12 @@
   "clientes": [
     {
       "id": 1,
-      "nombre": "Javier",
+      "nombre": "Javierito",
       "nif": "12345678Z"
     },
     {
       "id": 3,
-      "nombre": "Pedro",
+      "nombre": "Pedrito",
       "nif": "87654321A"
     },
     {

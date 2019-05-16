@@ -8,16 +8,19 @@ import { MensajesService } from 'src/app/servicios/mensajes.service';
 })
 export class MensajesComponent implements OnInit {
 
-  mensaje: string;
+  mensajes: string[] = [];
 
   constructor(private mensajesService: MensajesService) { }
 
   ngOnInit() {
-    this.mensaje = 'Bienvenido';
-    
+    this.mensajes.push('Bienvenido');
+
     this.mensajesService.onMensaje.subscribe(
-      mensajeRecibido => this.mensaje = mensajeRecibido
+      mensajeRecibido => this.mensajes.push(mensajeRecibido)
     );
   }
 
+  limpiarMensajes() {
+    this.mensajes = [];
+  }
 }

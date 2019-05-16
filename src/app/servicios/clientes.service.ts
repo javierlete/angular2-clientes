@@ -27,18 +27,26 @@ export class ClientesService {
   }
   
   getCliente(id: number): Observable<Cliente> {
-    return this.http.get<Cliente>(api + id);
+    return this.http.get<Cliente>(api + id).pipe(
+      tap( cliente => this.mensajesService.set(`Obtenido el cliente ${cliente.id}`))
+    );
   }
 
   putCliente(cliente: Cliente): Observable<Cliente> {
-    return this.http.put<Cliente>(api + cliente.id, cliente);
+    return this.http.put<Cliente>(api + cliente.id, cliente).pipe(
+      tap( cliente => this.mensajesService.set(`Modificando el cliente ${cliente.id}`))
+    );
   }
 
   deleteCliente(id: number): Observable<Cliente> {
-    return this.http.delete<Cliente>(api + id);
+    return this.http.delete<Cliente>(api + id).pipe(
+      tap( cliente => this.mensajesService.set(`Borrando el cliente ${id}`))
+    );
   }
 
   postCliente(cliente: Cliente): Observable<Cliente> {
-    return this.http.post<Cliente>(api, cliente);
+    return this.http.post<Cliente>(api, cliente).pipe(
+      tap( cliente => this.mensajesService.set(`Añadiendo el cliente ${cliente.id}`))
+    );
   }
 }
