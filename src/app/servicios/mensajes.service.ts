@@ -1,17 +1,13 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MensajesService {
-
-  private mensaje: string = 'Bienvenido desde el servicio';
+  onMensaje = new Subject<string>();
 
   set(texto: string) : void {
-    this.mensaje = texto;
-  }
-
-  get(): string {
-    return this.mensaje;
+    this.onMensaje.next(texto);
   }
 }

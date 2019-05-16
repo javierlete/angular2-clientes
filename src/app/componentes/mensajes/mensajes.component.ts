@@ -13,7 +13,11 @@ export class MensajesComponent implements OnInit {
   constructor(private mensajesService: MensajesService) { }
 
   ngOnInit() {
-    this.mensaje = this.mensajesService.get();
+    this.mensaje = 'Bienvenido';
+    
+    this.mensajesService.onMensaje.subscribe(
+      mensajeRecibido => this.mensaje = mensajeRecibido
+    );
   }
 
 }

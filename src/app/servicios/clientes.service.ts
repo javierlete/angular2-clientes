@@ -5,6 +5,7 @@ import { tap } from 'rxjs/operators';
 
 import { Cliente } from '../modelo/cliente';
 import { HttpClient } from '@angular/common/http';
+import { MensajesService } from './mensajes.service';
 
 
 const api = 'http://localhost:3000/clientes/'
@@ -13,10 +14,14 @@ const api = 'http://localhost:3000/clientes/'
 })
 export class ClientesService {
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private mensajesService: MensajesService
+    ) {}
 
   getClientes(): Observable<Cliente[]> {
     return this.http.get<Cliente[]>(api).pipe(
+      tap( clientes => this.mensajesService.set(`Se han recibido ${clientes.length} clientes`)),
       tap( clientes => console.log(clientes) )
     );
   }
