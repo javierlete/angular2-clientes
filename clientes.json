@@ -9,11 +9,6 @@
       "id": 3,
       "nombre": "Pedrito",
       "nif": "87654321A"
-    },
-    {
-      "id": 4,
-      "nombre": "Modificado",
-      "nif": "11111111A"
     }
   ]
 }

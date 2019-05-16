@@ -1,6 +1,8 @@
-<ul>
-  <li *ngFor="let mensaje of mensajes">{{mensaje}}</li>
-</ul>
-<p>
-  <a (click)="limpiarMensajes()">Limpiar mensajes</a>
-</p>
+<div *ngIf="mensajes.length">
+  <ul>
+    <li *ngFor="let mensaje of mensajes">{{mensaje}}</li>
+  </ul>
+  <p>
+    <a (click)="limpiarMensajes()">Limpiar mensajes</a>
+  </p>
+</div>
