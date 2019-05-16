@@ -1,7 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+
+import { tap } from 'rxjs/operators';
+
 import { Cliente } from '../modelo/cliente';
 import { HttpClient } from '@angular/common/http';
+
 
 const api = 'http://localhost:3000/clientes/'
 @Injectable({
@@ -12,7 +16,9 @@ export class ClientesService {
   constructor(private http: HttpClient) {}
 
   getClientes(): Observable<Cliente[]> {
-    return this.http.get<Cliente[]>(api);
+    return this.http.get<Cliente[]>(api).pipe(
+      tap( clientes => console.log(clientes) )
+    );
   }
   
   getCliente(id: number): Observable<Cliente> {
