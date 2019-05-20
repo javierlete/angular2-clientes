@@ -8,3 +8,17 @@ ul {
 li {
     list-style: none;
 }
+
+.error, .info {
+    padding: 1em;
+    border-radius: 1em;
+    margin: 1em 0;
+}
+
+.info {
+    background-color: white;
+}
+
+.error {
+    background-color: red;
+}

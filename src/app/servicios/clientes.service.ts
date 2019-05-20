@@ -21,7 +21,7 @@ export class ClientesService {
 
   getClientes(): Observable<Cliente[]> {
     return this.http.get<Cliente[]>(api).pipe(
-      tap( clientes => this.mensajesService.set(`Se han recibido ${clientes.length} clientes`)),
+      tap( clientes => this.mensajesService.set({ texto: `Se han recibido ${clientes.length} clientes` })),
       tap( clientes => console.log(clientes) ),
       catchError(this.gestionarErrores<Cliente[]>('getClientes', []))
     );
@@ -29,28 +29,28 @@ export class ClientesService {
   
   getCliente(id: number): Observable<Cliente> {
     return this.http.get<Cliente>(api + id).pipe(
-      tap( cliente => this.mensajesService.set(`Obtenido el cliente ${cliente.id}`)),
+      tap( cliente => this.mensajesService.set({ texto : `Obtenido el cliente ${cliente.id}` })),
       catchError(this.gestionarErrores<Cliente>('getCliente'))
     );
   }
 
   putCliente(cliente: Cliente): Observable<Cliente> {
     return this.http.put<Cliente>(api + cliente.id, cliente).pipe(
-      tap( cliente => this.mensajesService.set(`Modificando el cliente ${cliente.id}`)),
+      tap( cliente => this.mensajesService.set({ texto : `Modificando el cliente ${cliente.id}` })),
       catchError(this.gestionarErrores<Cliente>('putCliente'))
     );
   }
 
   deleteCliente(id: number): Observable<Cliente> {
     return this.http.delete<Cliente>(api + id).pipe(
-      tap( cliente => this.mensajesService.set(`Borrando el cliente ${id}`)),
+      tap( cliente => this.mensajesService.set({ texto : `Borrando el cliente ${id}` })),
       catchError(this.gestionarErrores<Cliente>('deleteCliente'))
     );
   }
 
   postCliente(cliente: Cliente): Observable<Cliente> {
     return this.http.post<Cliente>(api, cliente).pipe(
-      tap( cliente => this.mensajesService.set(`Añadiendo el cliente ${cliente.id}`)),
+      tap( cliente => this.mensajesService.set({ texto : `Añadiendo el cliente ${cliente.id}` })),
       catchError(this.gestionarErrores<Cliente>('postCliente'))
     );
   }
@@ -59,7 +59,7 @@ export class ClientesService {
     return (error: any): Observable<TipoRecibido> => { 
       console.error(categoria, dato);
 
-      this.mensajesService.set(`Error al hacer ${categoria}`);
+      this.mensajesService.set({ nivel: 'error', texto : `Error al hacer ${categoria}` });
 
       return of(dato as TipoRecibido);
     }
